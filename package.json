@@ -1,0 +1,45 @@
+{
+  "name": "bincheck",
+  "version": "0.1.0",
+  "description": "Audit, validate, and fix npm package bin entries, shebangs, line endings, and publish inclusions",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "bincheck": "./bin/bincheck.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:types": "tsc --emitDeclarationOnly",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "node --test test/**/*.test.js",
+    "test:coverage": "node --test --experimental-test-coverage test/**/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "bin",
+    "shebang",
+    "crlf",
+    "npm",
+    "cli",
+    "audit",
+    "pack",
+    "validator"
+  ],
+  "author": "Build Agent <build-agent@example.invalid>",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "typescript": "^7.0.2"
+  }
+}
