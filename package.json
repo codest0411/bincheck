@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "build:types": "tsc --emitDeclarationOnly",
+    "prepublishOnly": "npm run build:types",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "node --test test/**/*.test.js",
