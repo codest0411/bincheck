@@ -10,13 +10,14 @@ import { execFileSync } from 'node:child_process';
  *
  * @param {Record<string, string | undefined>} [env=process.env]
  * @param {string} [nodePath=process.execPath]
+ * @param {(p: string) => boolean} [existsSync=fs.existsSync]
  * @returns {string} Absolute path to npm-cli.js
  * @throws {Error} If npm-cli.js cannot be located
  */
-export function resolveNpmCli(env = process.env, nodePath = process.execPath) {
+export function resolveNpmCli(env = process.env, nodePath = process.execPath, existsSync = fs.existsSync) {
   // 1. Check npm_execpath provided by npm / npx runner
   if (env.npm_execpath && typeof env.npm_execpath === 'string') {
-    if (fs.existsSync(env.npm_execpath)) {
+    if (existsSync(env.npm_execpath)) {
       return env.npm_execpath;
     }
   }
@@ -35,7 +36,7 @@ export function resolveNpmCli(env = process.env, nodePath = process.execPath) {
   ];
 
   for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) {
+    if (existsSync(candidate)) {
       return candidate;
     }
   }

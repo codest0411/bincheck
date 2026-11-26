@@ -35,7 +35,7 @@ test('npm-exec: resolveNpmCli falls back to node directory candidates', () => {
 
 test('npm-exec: resolveNpmCli throws helpful error when not found', () => {
   assert.throws(
-    () => resolveNpmCli({ npm_execpath: 'nonexistent-path' }, 'C:\\nonexistent\\node.exe'),
+    () => resolveNpmCli({ npm_execpath: 'nonexistent-path' }, 'C:\\nonexistent\\node.exe', () => false),
     /Unable to locate npm-cli\.js/
   );
 });
